@@ -35,6 +35,7 @@ int main (int argc, char *argv[]) {
 
                         // Run program
                         system(program);
+                        system("sudo sync && free -m && sudo sysctl -w vm.drop_caches=3");
                         break;
                     // C++
                     case 1:
@@ -42,6 +43,7 @@ int main (int argc, char *argv[]) {
 
                         // Run program
                         system(program);
+                        system("sudo sync && free -m && sudo sysctl -w vm.drop_caches=3");
                         break;
                     // Go
                     case 2:
