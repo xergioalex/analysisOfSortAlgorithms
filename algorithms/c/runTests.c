@@ -16,16 +16,17 @@ int main (int argc, char *argv[]) {
     system("rm -rf ../../outputs && mkdir ../../outputs");
 
     for (language = 0; language <= 5; language++) {
-        for (algorithm = 0; algorithm < 7; algorithm++) {
-            strcpy(algorithmText, (algorithm == 0)? "bubbleSort": (algorithm == 1)? "countingSort": (algorithm == 2)? "heapSort": (algorithm == 3)? "insertionSort": (algorithm == 4)? "mergeSort": (algorithm == 5)? "quickSort": "selectionSort");
 
-            for (increaseSize = 10, increaseSizeAux = 1, size = 10; size <= 1000000; size += increaseSize) {
-                if (increaseSizeAux % 10 == 0) {
-                    increaseSizeAux = 1;
-                    increaseSize = increaseSize * 10;
-                }
+        for (increaseSize = 10, increaseSizeAux = 1, size = 10; size <= 1000000; size += increaseSize) {
+            if (increaseSizeAux % 10 == 0) {
+                increaseSizeAux = 1;
+                increaseSize = increaseSize * 10;
+            }
 
-                // printf("%d %d %d\n", size, increaseSize, increaseSizeAux);
+            // printf("%d %d %d\n", size, increaseSize, increaseSizeAux);
+
+            for (algorithm = 0; algorithm < 7; algorithm++) {
+                strcpy(algorithmText, (algorithm == 0)? "bubbleSort": (algorithm == 1)? "countingSort": (algorithm == 2)? "heapSort": (algorithm == 3)? "insertionSort": (algorithm == 4)? "mergeSort": (algorithm == 5)? "quickSort": "selectionSort");
 
                 switch (language) {
                     // C
@@ -55,9 +56,9 @@ int main (int argc, char *argv[]) {
                     case 5:
                         break;
                 }
-                increaseSizeAux++;
-
             }
+
+            increaseSizeAux++;
 
         }
 
