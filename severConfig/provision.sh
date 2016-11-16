@@ -1,6 +1,6 @@
 #### Base installation
 sudo apt-get update -y
-sudo apt-get update -y
+sudo apt-get upgrade -y
 sudo apt-get install -y build-essential gcc python-dev python-pip python-setuptools
 
 #### Git
