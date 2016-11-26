@@ -13,7 +13,7 @@ import java.util.Random;
  * @author xergioalex
  */
 public class RandomNumbers {
-    public static double size = 100;
+    public static double size = 1000000000;
 
     /**
      *
