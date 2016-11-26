@@ -13,7 +13,7 @@ import java.util.Random;
  * @author xergioalex
  */
 public class RandomNumbers {
-    public static int size = 1000000;
+    public static double size = 100;
 
     /**
      *
@@ -30,11 +30,11 @@ public class RandomNumbers {
                 file.createNewFile();
             }
 
-            writer = new FileWriter(file.getAbsoluteFile());
+            writer = new FileWriter(file.getAbsoluteFile(), true);
 
             String numbers = "";
-            int lenght = size;
-            for (int i = lenght; i >= 0; i--) {
+            double lenght = size;
+            for (double i = lenght; i >= 0; i--) {
                 // numbers += i;
                 numbers += randInt(10000, 100000);
 

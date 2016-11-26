@@ -23,7 +23,7 @@ void readNumbersFromFile (int size, int *numbers) {
 }
 
 void printLog(char text[300]) {
-    // printf("%s\n", text);
+    printf("%s\n", text);
     char filename[300];
     sprintf(filename, "../../outputs/filename.log");
     escribirArchivo(filename, text);

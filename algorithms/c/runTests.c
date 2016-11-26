@@ -23,41 +23,14 @@ int main (int argc, char *argv[]) {
                 increaseSize = increaseSize * 10;
             }
 
-            // printf("%d %d %d\n", size, increaseSize, increaseSizeAux);
-
             for (algorithm = 0; algorithm < 7; algorithm++) {
                 strcpy(algorithmText, (algorithm == 0)? "bubbleSort": (algorithm == 1)? "countingSort": (algorithm == 2)? "heapSort": (algorithm == 3)? "insertionSort": (algorithm == 4)? "mergeSort": (algorithm == 5)? "quickSort": "selectionSort");
 
-                switch (language) {
-                    // C
-                    case 0:
-                        sprintf(program, "gcc benchmark.c -o benchmark.out && ./benchmark.out %s %d", algorithmText, size);
+                sprintf(program, "gcc benchmark.c -o benchmark.out && ./benchmark.out %s %d", algorithmText, size);
 
-                        // Run program
-                        system(program);
-                        system("sudo sync && free -m && sudo sysctl -w vm.drop_caches=3");
-                        break;
-                    // C++
-                    case 1:
-                        sprintf(program, "g++ benchmark.cpp -o benchmark.out && ./benchmark.out %s %d", algorithmText, size);
-
-                        // Run program
-                        system(program);
-                        system("sudo sync && free -m && sudo sysctl -w vm.drop_caches=3");
-                        break;
-                    // Go
-                    case 2:
-                        break;
-                    // Go
-                    case 3:
-                        break;
-                    // Java
-                    case 4:
-                        break;
-                    // Racket
-                    case 5:
-                        break;
-                }
+                // Run program
+                system(program);
+                system("sudo sync && free -m && sudo sysctl -w vm.drop_caches=3");
             }
 
             increaseSizeAux++;
