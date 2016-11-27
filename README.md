@@ -190,10 +190,10 @@ La respuesta es que **Si influye**, pero en nuestro experimento **No mucho**, o 
 Si nos vamos un poco atrás, recordamos que el experimento lo pausamos al llegar a una cantidad de 1,600.000 datos, ya que los algoritmos de complejidad O(n^2) se estaban demorando varias horas para correr cada prueba, ¿que tal si corremos solo los algoritmos eficientes (los cuales apenas y llegaron al umbral de 1 segundo) y comprobamos hasta donde son capáz de aguantar nuestras máquinas? Manos a la obra (los resultados se pueden encontrar en **results/analysis.ods**):
 
 #### 3.4.1. Capacidad máxima de procesamiento para M1 con 1GB de RAM
-![Capacidad máxima de procesamiento para M1 con 1GB de RAM](media/architectureM1.png)
+![Capacidad máxima de procesamiento para M1 con 1GB de RAM](media/faststAlgorithmsMemoryTestM1.png)
 
 #### 3.4.2. Capacidad máxima de procesamiento para M2 con 2GB de RAM
-![Capacidad máxima de procesamiento para M2 con 2GB de RAM](media/architectureM2.png)
+![Capacidad máxima de procesamiento para M2 con 2GB de RAM](media/faststAlgorithmsMemoryTestM2.png)
 
 
 
