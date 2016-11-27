@@ -125,6 +125,8 @@ Como se puede observar en cada imagen se muestra la gráfica de cada algoritmo, 
 
 Como se puede observar en esta gráfica comparativa, no podemos conocer a ciencia cierta quien fue el ganador, dado que hay 4 algoritmos solapan entre si debido a la escala de la gráfica, y corresponden al **quickSort, mergeSort, heapSort y countingSort**, pero con total seguridad tenemos un claro perdedor, el cual fue el algoritmo burbuja con una complejidad algoritmica de O(n^2), seguido del **insertionSort** y el **selectionSort**, los cuales tienen igual una complejidad de O(n^2) pero sus implementaciones son un poco más eficientes dado que se hacen menos comparaciones, pero no dejan de ser unos algoritmos poco eficientes.
 
+Las consideraciones anteriores son un claro ejemplo de los retos que enfrentamos día a día quienes trabajamos en ciencias de la computación, existe una gran cantidad de lenguajes de programación, herramientas y soluciones diversas a un mismo problema, pero cada una con un campo de acción enfocadas a condiciones específicas.
+
 A continuación imprimiré los últimos 7 tiempos obtenidos para cada algoritmo y para cada maquina en segundos, tener en cuenta que la primera columna **size** representa la cantidad de datos a ordenar.
 
 | Size  |  BubbleSort – M1 | CountingSort – M1  | HeapSort – M1  | InsertionSort – M1 | MergeSort – M1 | QuickSort – M1 | SelectionSort – M1
@@ -151,8 +153,6 @@ Dando un vistazo a estas tablas ya deberíamos conocer el ganador, pero ya que u
 ![Grafica](media/fastestAlgorithms.png)
 
 Como ya lo debíamos de suponer el claro ganador fue el algoritmo de **contéo (countingSort)** con una complejidad algoritmica de O(n+k), siendo **n** la cantidad de datos a ordenar y **k** el tamaño del vector auxiliar (máximo - mínimo). Pero no todo es color de rosas para el algoritmo de contéo, debido a que tiene una gran limitación, la cual es que solo funciona con numeros enteros, dado que requiere de un vector auxiliar donde almacenar la cuenta de cada valor; y por otro lado incluso cuando queremos ordenar solo numeros enteros si la diferencia entre el máximo y el mínimo de los datos a ordenar es muy grande, el vector auxiliar requerido implica un consumo excesivo de memoria, lo cual hace que la balanza se incline cada vez más en contra, pero como hemos probado, bajo condiciones específicas, el algoritmo de **contéo** es una de las mejores técnicas para ordenar datos, seguido del **quickSort** quien obtuvo el segundo lugar en este experimento, algoritmo con una complejidad de O(n log n), siendo uno de los más usados con el cual puedes ordenar también numeros reales; pero que igual que el algoritmo de **contéo** tiene sus falencias, dado que hay casos extremos en los cuales la complejidad se puede elevar a O(n^2) dependiendo de la distribución de los datos y una mala elección del pivote.
-
-Las consideraciones anteriores son un claro ejemplo de los retos que enfrentamos día a día quienes trabajamos en ciencias de la computación, existe una gran cantidad de lenguajes de programación, herramientas y soluciones diversas a un mismo problema, pero cada una con un campo de acción enfocadas a condiciones específicas.
 
 ### 3. Maquina 1 vs Maquina 2
 
@@ -195,7 +195,7 @@ Si nos vamos un poco atrás, recordamos que el experimento lo pausamos al llegar
 #### 3.4.2. Capacidad máxima de procesamiento para M2 con 2GB de RAM
 ![Capacidad máxima de procesamiento para M2 con 2GB de RAM](media/faststAlgorithmsMemoryTestM2.png)
 
-En los resultados obtenidos, se puede ver claramente como la capacidad de memoria extra le permitio a M2, procesar el doble o en algunos caso el triple o más de lo que pudo M1, todo esto depende de como cada algoritmo esta diseñado, por ejemplo vemos que el **mergeSort** fue el que menos aguanto, debido a que utiliza un arreglo auxiliar de tamaño igual a N, por lo tanto ocupa dos veces más memoria de la que ocuparía por ejemplo el **quickSort** que no requiere arreglo auxiliar. Aprovechando que tenemos nuevos datos, procedemos a gráficar nuevamente estos algoritmos con el fin de obtener unas curvas de comportamiento más uniformes.
+En los resultados obtenidos, se puede ver claramente como la capacidad de memoria extra le permitio a M2, procesar el doble o en algunos caso el triple o más de lo que pudo M1, todo esto depende de como cada algoritmo esta diseñado, por ejemplo vemos que el **mergeSort** fue el que menos aguanto, debido a que utiliza un arreglo auxiliar de tamaño igual a N, por lo tanto ocupa dos veces más memoria de la que ocuparía por ejemplo el **quickSort** que no requiere arreglo auxiliar.
 
 #### 3.4.3. Conteo (Counting Sort) hasta el máximo volumen de datos: O(n+k)
 ![Conteo (Counting Sort)](media/countingSortMaxMemory.png)
@@ -211,3 +211,12 @@ En los resultados obtenidos, se puede ver claramente como la capacidad de memori
 
 #### 3.4.7 Gráfica comparativa de los algoritmos eficientes hasta el máximo volumen de datos
 ![Todos los algoritmos hasta el máximo volumen de datos](media/allAlgorithmsMaxMemory.png)
+
+Finalmente tras analizar las nuevas gráficas obtenidas nos damos cuenta que el extender un poco el experimento con mayor volumen de datos nos ha permitido obtener curvas con un comportamiento más constante y uniforme que podemos comparar con las funciones de complejidad de cada algoritmo, además de poder conocer como los diferentes recursos de un sistema pueden influir en el procesamiento y obtención de resultados.
+
+Espero que todo este análisis le resulte útil algún día a quienes se inician en ciencias de la computación, o quienes quieran repasar conceptos.
+
+--
+
+*“La inteligencia consiste no sólo en el conocimiento, sino también en la destreza de aplicar los conocimientos en la práctica”*
+*-- Aristóteles*
