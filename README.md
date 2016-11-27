@@ -175,13 +175,25 @@ Por lo tanto si un procesador tiene una velocidad de 1 MHz, esto se traduce en q
 $ lscpu
 ```
 
-#### 3.1 Información del sistema para la M1
+#### 3.1. Información del sistema para la M1
 ![Arquitectura M1](media/architectureM1.png)
 
-#### 3.2 Información del sistema para la M2
+#### 3.2. Información del sistema para la M2
 ![Arquitectura M2](media/architectureM2.png)
 
+Rápidamente obtenemos la respuesta a nuestra pregunta; M1 tiene una frecuencia de procesamiento de **2399.998 MHz**, mientras que M2 tiene **1799.998** por cada nucleo, osea que mientras M1 puede procesar casi **2400 millones** de instrucciones por segundo, M2 solo puede procesar en el único nucleo que tiene en uso casi **1800 millones** de instrucciones por segundo, lo cual es un factor muy relevante para nuestro experimento.
 
+#### 3.3. ¿Pero entonces acaso la memoria RAM extra que poseemos en M2 no influye en nada?
+La respuesta es que **Si influye**, pero en nuestro experimento **No mucho**, o tal vez en simplente **No**, dado que nuestras máquinas se crearon desde cero y no se estan utilizando para nada correr otros procesos, por lo cual tenemos a disposición todos los recursos de la máquina sobre nuestros algoritmos de ordenamiento.
+
+#### 3.4. ¿Como podríamos aprovechar esos recursos extra en nuestro experimento?
+Si nos vamos un poco atrás, recordamos que el experimento lo pausamos al llegar a una cantidad de 1,600.000 datos, ya que los algoritmos de complejidad O(n^2) se estaban demorando varias horas para correr cada prueba, ¿que tal si corremos solo los algoritmos eficientes (los cuales apenas y llegaron al umbral de 1 segundo) y comprobamos hasta donde son capáz de aguantar nuestras máquinas? Manos a la obra (los resultados se pueden encontrar en **results/analysis.ods**):
+
+#### 3.4.1. Capacidad máxima de procesamiento para M1 con 1GB de RAM
+![Capacidad máxima de procesamiento para M1 con 1GB de RAM](media/architectureM1.png)
+
+#### 3.4.2. Capacidad máxima de procesamiento para M2 con 2GB de RAM
+![Capacidad máxima de procesamiento para M2 con 2GB de RAM](media/architectureM2.png)
 
 
 
