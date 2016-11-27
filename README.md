@@ -195,7 +195,19 @@ Si nos vamos un poco atrás, recordamos que el experimento lo pausamos al llegar
 #### 3.4.2. Capacidad máxima de procesamiento para M2 con 2GB de RAM
 ![Capacidad máxima de procesamiento para M2 con 2GB de RAM](media/faststAlgorithmsMemoryTestM2.png)
 
+En los resultados obtenidos, se puede ver claramente como la capacidad de memoria extra le permitio a M2, procesar el doble o en algunos caso el triple o más de lo que pudo M1, todo esto depende de como cada algoritmo esta diseñado, por ejemplo vemos que el **mergeSort** fue el que menos aguanto, debido a que utiliza un arreglo auxiliar de tamaño igual a N, por lo tanto ocupa dos veces más memoria de la que ocuparía por ejemplo el **quickSort** que no requiere arreglo auxiliar. Aprovechando que tenemos nuevos datos, procedemos a gráficar nuevamente estos algoritmos con el fin de obtener unas curvas de comportamiento más uniformes.
 
+#### 3.4.3. Conteo (Counting Sort) hasta el máximo volumen de datos: O(n+k)
+![Conteo (Counting Sort)](media/countingSortMaxMemory.png)
 
+#### 3.4.4. Montones (Heapsort) hasta el máximo volumen de datos: O(n log n)
+![Montones (Heapsort)](media/heapSortMaxMemory.png)
 
+#### 3.4.5. Mezclas (Merge Sort) hasta el máximo volumen de datos: O(n log n)
+![Mezclas (Merge Sort)](media/mergeSortMaxMemory.png)
 
+#### 3.4.6. Rápido (Quicksort) hasta el máximo volumen de datos: O(n log n)
+![Rápido (Quicksort)](media/quickSortMaxMemory.png)
+
+#### 3.4.7 Gráfica comparativa de los algoritmos eficientes hasta el máximo volumen de datos
+![Todos los algoritmos hasta el máximo volumen de datos](media/allAlgorithmsMaxMemory.png)
