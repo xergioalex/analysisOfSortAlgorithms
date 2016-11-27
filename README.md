@@ -77,28 +77,80 @@ sudo apt-get install openjdk-7-jdk -y
 
 En cada maquina se corrieron las pruebas con el mismo archivo de numeros aleatorios a ordenar, en intervalos inicialmente de 10 en 10, luego 100 en 100, luego 1.000, luego 10.000 etc, hasta 1.000.000.000 de datos; estos resultados se pueden visualizar en el archivo **results/analysis.ods**.
 
-Al cabo de 3 o 4 días de haber lanzado el archivo **runTest.c**, revise que las pruebas y apenas iban en 1.600.000 de datos, me parecio que era suficiente para sacar conclusiones así que decidí parar el experimento en ambos servidores, y ahora procedo a mostrar los resultados obtenidos comparando los tiempos de respuesta de cada algoritmo en cada maquina:
+En este punto hago un parentesis para documentar el truco que utilice para poder correr los el archivo de pruebas en background y de esa forma no depender de una sesion activa en la terminal para correr las mismas:
 
-#### 2.1. Burbuja (Bubble Sort)
+```
+# Correr pruebas
+$ gcc runTest.c -o runTest.out && ./runTest.out
+
+# Detenemos el proceso usando Ctrl + z
+# Una vez hecho esto ejecutamos lo siguiente
+disown -h %1
+bg 1
+
+# Lo anterior básicamente hace que el último proceso que se habia ejecutado corra en background, algo muy similar a lo que hace el &, solo que en este caso si cierro la sesion en la terminal no se detendra el programa.
+
+```
+
+Al cabo de 3 o 4 días de haber lanzado el archivo **runTest.c**, revise que los procesos y apenas iban en 1.600.000 de datos, me parecio que era suficiente para sacar conclusiones así que decidí parar el experimento en ambos servidores, y ahora procedo a mostrar los resultados obtenidos comparando los tiempos de respuesta de cada algoritmo en cada maquina:
+
+M1 = Maquina 1 (1 nucleo, 1GB de RAM)
+M2 = Maquina 2 (2 nucleos, 2GB de RAM)
+
+#### 2.1. Burbuja (Bubble Sort): O(n^2)
 ![Burbuja (Bubble Sort)](media/bubbleSort.png)
 
-#### 2.2. Conteo (Counting Sort)
+#### 2.2. Conteo (Counting Sort): O(n+k)
 ![Conteo (Counting Sort)](media/countingSort.png)
 
-#### 2.3. Montones (Heapsort)
+#### 2.3. Montones (Heapsort): O(n log n)
 ![Montones (Heapsort)](media/heapSort.png)
 
-#### 2.4. Inserción (Insertion Sort)
+#### 2.4. Inserción (Insertion Sort): O(n^2)
 ![Inserción (Insertion Sort)](media/insertionSort.png)
 
-#### 2.5. Mezclas (Merge Sort)
+#### 2.5. Mezclas (Merge Sort): O(n log n)
 ![Mezclas (Merge Sort)](media/mergeSort.png)
 
-#### 2.6. Rápido (Quicksort)
+#### 2.6. Rápido (Quicksort): O(n log n)
 ![Rápido (Quicksort)](media/quickSort.png)
 
-#### 2.7. Selección (Selection Sort)
+#### 2.7. Selección (Selection Sort): O(n^2)
 ![Selección (Selection Sort)](media/selectionSort.png)
+
+Como se puede observar en cada imagen se muestra la gráfica de cada algoritmo, primero en la maquina 1, luego en la maquina 2 y por último una tercera gráfica comparando ambas, donde la curva azul representa la máquina 1 y la linea naranja la maquina 2; como resultado de la simple observación, se puede concluir que la maquina 1 fue superior a la maquina 2, al menos menos por un pequeño margen en algunos casos. Pero porque es esto posible? acaso la maquina 2 no tenia el doble de recuersos que la maquina 1? dejaré esta incognita para un poco más adelante, primero determinemos cual de los algoritmos, fue el ganador, cosa que de antemano deberíamos ya suponer con solo conocer cada una de las complejidades algoritmicas:
+
+#### 2.8. Gráfica comparativa de todos los algoritmos
+![Todos los algoritmos](media/allAlgorithms.png)
+
+Como se puede observar en esta gráfica comparativa, no podemos conocer a ciencia cierta quien fue el ganador, dado que hay 4 algoritmos solapan entre si debido a la escala de la gráfica, y corresponden al **quickSort, mergeSort, heapSort y countingSort**, pero con total seguridad tenemos un claro perdedor, el cual fue el algoritmo burbuja con una complejidad algoritmica de n^2, seguido del **insertionSort** y el **selectionSort**, los cuales tienen igual una complejidad de n^2 pero en sus implementaciones son un poco más eficientes dado que se hacen menos comparaciones, pero no dejan de ser unos algoritmos poco eficientes.
+
+A continuación imprimiré los últimos 7 tiempos obtenidos para cada algoritmo y para cada maquina en segundos, tener en cuenta que la primera columna **size** representa la cantidad de datos a ordenar.
+
+| Size  |  BubbleSort – M1 | CountingSort – M1  | HeapSort – M1  | InsertionSort – M1 | MergeSort – M1 | QuickSort – M1 | SelectionSort – M1
+|---|---|---|---|---|---|---|---|
+| 1,000,000 | 5584.254499 | 0.016609 | 0.747395 | 2592.498977 | 0.704281 | 0.291499 | 1935.487457 |
+| 1,100,000 | 6637.222252 | 0.019187 | 0.925764 | 3171.445715 | 0.653455 | 0.471039 | 2269.966268 |
+| 1,200,000 | 8045.953682 | 0.023652 | 0.913537 | 3722.638885 | 0.513099 | 0.239454 | 2783.279525 |
+| 1,300,000 | 10169.383378 | 0.045208 | 0.713308 | 4824.250285 | 0.575149 | 0.261289 | 3514.914589 |
+| 1,400,000 | 12053.658798 | 0.034613 | 1.489084 | 5658.739951 | 0.676112 | 0.279478 | 4066.729922 |
+| 1,500,000 | 13798.854123 | 0.027525 | 1.094257 | 6555.365499 | 0.743651 | 0.315602 | 4839.340426 |
+| 1,600,000 | 15205.680544 | 0.028478 | 0.996648 | 6794.512119 | 0.725347 | 0.32599 | 5056.213092 |
+
+| Size  |  BubbleSort – M2 | CountingSort – M2  | HeapSort – M2  | InsertionSort – M2 | MergeSort – M2 | QuickSort – M2 | SelectionSort – M2
+|---|---|---|---|---|---|---|---|
+| 1,000,000 | 7069.317038 | 0.032415 | 0.752168 | 3178.694237 | 0.5582 | 0.315689 | 2454.531144 |
+| 1,100,000 | 8458.150387 | 0.024157 | 0.842038 | 3666.359787 | 0.557481 | 0.284579 | 2804.449695 |
+| 1,200,000 | 9495.898708 | 0.02653 | 0.882819 | 4084.581924 | 0.616636 | 0.358502 | 3081.74825 |
+| 1,300,000 | 10626.023771 | 0.027309 | 0.913814 | 4933.201883 | 0.75389 | 0.401456 | 3912.714921 |
+| 1,400,000 | 13439.250082 | 0.030009 | 1.061221 | 5790.797804 | 0.63318 | 0.442449 | 4066.729922 |
+| 1,500,000 | 15102.736592 | 0.031826 | 1.064744 | 6565.630358 | 0.788551 | 0.400238 | 5114.565289 |
+| 1,600,000 | 16483.694808 | 0.039298 | 1.365129 | 7311.347004 | 0.760618 | 0.449284 | 5676.768371 |
+
+Dando un vistazo a estas tablas ya deberíamos conocer el ganador, pero ya que una imagen vale más que mil palabras vamos a ello y ahora graficaremos solo los algoritmos veloces, que son el **quickSort, mergeSort, heapSort y countingSort**, de los cuales casi ninguno supero 1 segundo ordenando 1,600,000 de datos
+![Grafica](media/fastestAlgorithms.png)
+
+
 
 
 
