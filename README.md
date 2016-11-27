@@ -212,9 +212,9 @@ En los resultados obtenidos, se puede ver claramente como la capacidad de memori
 #### 3.4.7 Gráfica comparativa de los algoritmos eficientes hasta el máximo volumen de datos
 ![Todos los algoritmos hasta el máximo volumen de datos](media/allAlgorithmsMaxMemory.png)
 
-Finalmente tras analizar las nuevas gráficas obtenidas nos damos cuenta que el extender un poco el experimento con mayor volumen de datos nos ha permitido obtener curvas con un comportamiento más constante y uniforme que podemos comparar con las funciones de complejidad de cada algoritmo, además de poder conocer como los diferentes recursos de un sistema pueden influir en el procesamiento y obtención de resultados.
+Tras analizar las nuevas gráficas obtenidas nos damos cuenta que el extender un poco el experimento con mayor volumen de datos nos ha permitido obtener curvas con un comportamiento más constante y uniforme que podemos comparar con las funciones de complejidad de cada algoritmo, además de poder conocer como los diferentes recursos de un sistema pueden influir en el procesamiento y obtención de resultados.
 
-Espero que todo este análisis le resulte útil algún día a quienes se inician en ciencias de la computación, o quienes quieran repasar conceptos.
+Por último espero que todo este análisis le resulte útil algún día a quienes se inician en ciencias de la computación, o quienes quieran repasar conceptos. ¡Happy coding!
 
 --
 
