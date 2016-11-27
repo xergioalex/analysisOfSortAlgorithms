@@ -123,7 +123,7 @@ Como se puede observar en cada imagen se muestra la gráfica de cada algoritmo, 
 #### 2.8. Gráfica comparativa de todos los algoritmos
 ![Todos los algoritmos](media/allAlgorithms.png)
 
-Como se puede observar en esta gráfica comparativa, no podemos conocer a ciencia cierta quien fue el ganador, dado que hay 4 algoritmos solapan entre si debido a la escala de la gráfica, y corresponden al **quickSort, mergeSort, heapSort y countingSort**, pero con total seguridad tenemos un claro perdedor, el cual fue el algoritmo burbuja con una complejidad algoritmica de n^2, seguido del **insertionSort** y el **selectionSort**, los cuales tienen igual una complejidad de n^2 pero en sus implementaciones son un poco más eficientes dado que se hacen menos comparaciones, pero no dejan de ser unos algoritmos poco eficientes.
+Como se puede observar en esta gráfica comparativa, no podemos conocer a ciencia cierta quien fue el ganador, dado que hay 4 algoritmos solapan entre si debido a la escala de la gráfica, y corresponden al **quickSort, mergeSort, heapSort y countingSort**, pero con total seguridad tenemos un claro perdedor, el cual fue el algoritmo burbuja con una complejidad algoritmica de O(n^2), seguido del **insertionSort** y el **selectionSort**, los cuales tienen igual una complejidad de O(n^2) pero sus implementaciones son un poco más eficientes dado que se hacen menos comparaciones, pero no dejan de ser unos algoritmos poco eficientes.
 
 A continuación imprimiré los últimos 7 tiempos obtenidos para cada algoritmo y para cada maquina en segundos, tener en cuenta que la primera columna **size** representa la cantidad de datos a ordenar.
 
@@ -150,9 +150,36 @@ A continuación imprimiré los últimos 7 tiempos obtenidos para cada algoritmo 
 Dando un vistazo a estas tablas ya deberíamos conocer el ganador, pero ya que una imagen vale más que mil palabras vamos a ello y ahora graficaremos solo los algoritmos veloces, que son el **quickSort, mergeSort, heapSort y countingSort**, de los cuales casi ninguno supero 1 segundo ordenando 1,600,000 de datos
 ![Grafica](media/fastestAlgorithms.png)
 
+Como ya lo debíamos de suponer el claro ganador fue el algoritmo de **contéo (countingSort)** con una complejidad algoritmica de O(n+k), siendo **n** la cantidad de datos a ordenar y **k** el tamaño del vector auxiliar (máximo - mínimo). Pero no todo es color de rosas para el algoritmo de contéo, debido a que tiene una gran limitación, la cual es que solo funciona con numeros enteros, dado que requiere de un vector auxiliar donde almacenar la cuenta de cada valor; y por otro lado incluso cuando queremos ordenar solo numeros enteros si la diferencia entre el máximo y el mínimo de los datos a ordenar es muy grande, el vector auxiliar requerido implica un consumo excesivo de memoria, lo cual hace que la balanza se incline cada vez más en contra, pero como hemos probado, bajo condiciones específicas, el algoritmo de **contéo** es una de las mejores técnicas para ordenar datos, seguido del **quickSort** quien obtuvo el segundo lugar en este experimento, algoritmo con una complejidad de O(n log n), siendo uno de los más usados con el cual puedes ordenar también numeros reales; pero que igual que el algoritmo de **contéo** tiene sus falencias, dado que hay casos extremos en los cuales la complejidad se puede elevar a O(n^2) dependiendo de la distribución de los datos y una mala elección del pivote.
 
+Las consideraciones anteriores son un claro ejemplo de los retos que enfrentamos día a día quienes trabajamos en ciencias de la computación, existe una gran cantidad de lenguajes de programación, herramientas y soluciones diversas a un mismo problema, pero cada una con un campo de acción enfocadas a condiciones específicas.
 
+### 3. Maquina 1 vs Maquina 2
 
+Antes de terminar con este breve análisis, habíamos dejado una incognita unos parrafos atrás, donde encontramos que la maquina 1 vencio a la maquina 2 en tiempos de respuesta, pero ¿como fue posible si poseía el doble de recursos? La respuesta la encontramos en la capacidad de procesamiento de cada maquina, en teoria en M2 tenemos a disposición dos nucleos de procesamiento para ejecutar instrucciones, ¿pero realmente ambos nucleos estan corriendo en paralelo para dar solución a mis procesos de ordenamiento? la respuesta en este caso es **NO**, nuestros algoritmos no estan programados de forma tal que puedan usar todos los nucleos de la maquina, para ello deberíamos usar hilos y poder dividir tareas de forma tal que nuestros procesos puedan hacer varias cosas al tiempo por medio del uso de hilos, pero a pesar de lo anterior, dentro los algoritmos que estamos analizando no todos se pueden paralelizar, dado que siguen una rigurosa secuencia de tareas.
+
+Hasta este punto lo único que hemos aclarado es que en cuanto a capacidad de procesamiento, ambas maquinas se encuentran en las mismas condiciones (1 nucleo de procesamiento en uso), pero en este caso M2, deberia seguir teniendo la ventaja, dado que posee el doble de memoria RAM, o es que acaso ¿a más memoria peor rendimiento? ¡¿QUEE?!, tranquilo querido lector hay una mejor explicación, cada nucleo de procesamiento tiene asociada una frecuencia de reloj, la cual permite definir la velocidad a la cual se pueden ejecutar tareas por segundo y esta expresada en **Hertz**, es decir, mide la cantidad de ciclos de procesamiento en un segundo de tiempo (Cantidad de ciclos que suceden en un segundo).
+
+Esta medida se presenta en las siguientes unidades:
+
+* 1 Hertz (Hz)= un ciclo/segundo
+* 1 Kilohertz (KHz)= 1024 Hz
+* 1 MegaHertz (MHz)= 1024 KHz
+* 1 GigaHertz(GHz)= 1024 MHz
+* 1 TeraHertz (THz)= 1024 GHz
+
+Por lo tanto si un procesador tiene una velocidad de 1 MHz, esto se traduce en que el procesador ejecuta 1 millon de ciclos en un segundo. Así que saquemonos de dudas y veamos cual es la frecuencia de procesamiento de cada una de nuestras maquinas:
+
+```
+# Acceso al servidor y ejecuto el comando lscpu, el cual me entrega información acerca de la arquitectura de los CPU presentes en el sistema.
+$ lscpu
+```
+
+#### 3.1 Información del sistema para la M1
+![Arquitectura M1](media/architectureM1.png)
+
+#### 3.2 Información del sistema para la M2
+![Arquitectura M2](media/architectureM2.png)
 
 
 
