@@ -2,7 +2,7 @@
 
 ## 1. Definición y procedimiento
 
-Como parte de un ejercicio típico de algoritmia en la Universidad, hice un pequeño análisis comparativo de los algoritmos de ordenamiento más populares, buscando estudiar la complejidad de cada uno de ellos y como las diferentes formas de resolver un mismo problema pueden afectar los tiempos de ejecución. Quiero aclarar que este es solo un análisis academíco muy simple que quiero documentar, el cual tal vez sirva a futuro para otros estudiantes de ciencias de la computación.
+Como parte de un ejercicio típico de algoritmia en la Universidad, hice un pequeño análisis comparativo de los algoritmos de ordenamiento más populares, buscando estudiar la complejidad de cada uno de ellos y como las diferentes formas de resolver un mismo problema pueden afectar los tiempos de ejecución. Quiero aclarar que este es solo un análisis académico muy simple que quiero documentar, el cual tal vez sirva a futuro para otros estudiantes de ciencias de la computación.
 
 Comence desarrollando un pequeño script en Java que permite generar numeros aleatorios de cinco digitos y almacenarlos en un archivo de texto, esto con el fin de poder analizar el mismo conjunto de datos entre los diferentes algoritmos; el script correspondiente lo puede hallar y ejecutar de la siguiente forma:
 
