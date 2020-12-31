@@ -246,3 +246,13 @@ Por último espero que todo este análisis le resulte útil algún día a quiene
 
 *“La inteligencia consiste no sólo en el conocimiento, sino también en la destreza de aplicar los conocimientos en la práctica”*
 *-- Aristóteles*
+
+## :electric_plug: Powered by [XergioAleX](https://www.xergioalex.com/)
+
+<a href="https://www.xergioalex.com/" target="_blank">
+  <img alt="XergioAleX Logo" src="xergioalex.png" width="250">
+</a>
+
+## License
+
+This project is [MIT licensed](./LICENSE).
